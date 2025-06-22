@@ -2,12 +2,13 @@
     include 'mysql_connect.php';
 
     if (isset($_POST['submit'])) {
+
+
         $username = $_POST['username'];
         $password = $_POST['password'];
         $job = $_POST['job'];
         $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' AND job='$job'";
         $result = mysqli_query($con, $sql);
-
         if (mysqli_num_rows($result) > 0) {
             if($_POST['job']== 'admin') {
                 header("Location: Admin_home.php");
@@ -43,7 +44,7 @@
             <option value="employee">Employee</option>
         </select>
 
-        <button type="submit" class="btn btn-primary">SignIn</button>
+        <button type="submit" class="btn btn-primary" name="submit">SignIn</button>
         <button type="button" class="btn btn-secondary" onclick="window.location.href='register.php'">Register</button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
