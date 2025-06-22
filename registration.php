@@ -2,21 +2,20 @@
     include 'mysql_connect.php';
 
     if (isset($_POST['submit'])) {
-
-
         $username = $_POST['username'];
         $password = $_POST['password'];
         $job = $_POST['job'];
-        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password' AND job='$job'";
+
+        $sql = "INSERT INTO users (username, password, job) VALUES ('$username', '$password', '$job')";
         $result = mysqli_query($con, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            if($_POST['job']== 'admin') {
-                header("Location: Admin_home.php");
-            } else if($_POST['job']== 'employee') {
-                header("Location: Employee_home.php");
-            }
+
+        if ($result) {
+            echo "<script>alert('Registration successful!');</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
         }
-    }     
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +43,8 @@
             <option value="employee">Employee</option>
         </select>
 
-        <button type="submit" class="btn btn-primary" name="submit">SignIn</button>
-        <a class="btn btn-secondary" href='registration.php'>Register</a>
+        <button type="submit" class="btn btn-primary" name="submit">SignUp</button>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='login.php'">SignIn</button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
