@@ -2,7 +2,7 @@
     echo "<h1>Welcome to the Admin Home Page</h1>";
     include 'mysql_connect.php';
 
-    $sql = "SELECT * FROM registrations";
+    $sql = "SELECT * FROM events";
     $result = mysqli_query($con, $sql);
 
 
@@ -17,7 +17,7 @@
     <title>Document</title>
 </head>
 <body>
-    <ul class="nav justify-content-center">
+     <ul class="nav justify-content-center">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="Admin_home.php">Home</a>
         </li>
@@ -33,10 +33,11 @@
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Event_id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Options</th>
             </tr>
         </thead>
         <tbody>
@@ -45,10 +46,14 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>
                             <th scope='row'>" . $row['id'] . "</th>
-                            <td>" . $row['event_id'] . "</td>
-                            <td>" . $row['name'] . "</td>
-                            <td>" . $row['email'] . "</td>
-                            <td>" . $row['contact'] . "</td>
+                            <td>" . $row['title'] . "</td>
+                            <td>" . $row['description'] . "</td>
+                            <td>" . $row['date'] . "</td>
+                            <td>" . $row['location'] . "</td>
+                            <td>
+                                <a href='edit_event.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a>
+                                <a href='delete_event.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
+                            </td>
                           </tr>";
                     }
                 }  

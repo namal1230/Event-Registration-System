@@ -26,12 +26,15 @@
     <title>Document</title>
 </head>
 <body>
-    <ul class="nav justify-content-center">
+     <ul class="nav justify-content-center">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="Admin_home.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="Save_event.php">Save Event</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="view_admin_events.php">Events</a>
         </li>
     </ul>
 
