@@ -1,0 +1,27 @@
+CREATE DATABASE registration;
+
+USE registration;
+
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    job VARCHAR(255)
+);
+
+ CREATE TABLE registrations(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    event_id INT,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    contact VARCHAR(255),
+    employee_id INT
+);
+
+ CREATE TABLE events(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255),
+    description VARCHAR(255),
+    date VARCHAR(255),
+    location VARCHAR(255)
+);
