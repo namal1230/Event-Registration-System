@@ -1,11 +1,11 @@
 <?php
     echo "<h1>Welcome to the Employee Home Page</h1>";
     include 'mysql_connect.php';
-
-    $id= $_GET['id'];
-
-    $sql = "SELECT * FROM registrations WHERE employee_id = '" . $id . "'";
+    
+    $sql = "SELECT * FROM events";
     $result = mysqli_query($con, $sql);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +19,10 @@
 <body>
      <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Employee_home.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="Employee_home.php?id=<?php echo $_GET['id'] ?>">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Employee_events.php?id= <?php echo$id ?>">Events</a>
+            <a class="nav-link" href="Employee_events.php">Events</a>
         </li>
     </ul>
 
@@ -30,10 +30,10 @@
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Event_id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Location</th>
             </tr>
         </thead>
         <tbody>
@@ -42,10 +42,10 @@
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>
                             <th scope='row'>" . $row['id'] . "</th>
-                            <td>" . $row['event_id'] . "</td>
-                            <td>" . $row['name'] . "</td>
-                            <td>" . $row['email'] . "</td>
-                            <td>" . $row['contact'] . "</td>
+                            <td>" . $row['title'] . "</td>
+                            <td>" . $row['description'] . "</td>
+                            <td>" . $row['date'] . "</td>
+                            <td>" . $row['location'] . "</td>
                           </tr>";
                     }
                 }  

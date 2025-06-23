@@ -13,7 +13,8 @@
             if($_POST['job']== 'admin') {
                 header("Location: Admin_home.php");
             } else if($_POST['job']== 'employee') {
-                header("Location: Employee_home.php");
+                $row=mysqli_fetch_assoc($result);
+                header("Location: Employee_home.php?id=".$row['id']);
             }
         }
     }     
