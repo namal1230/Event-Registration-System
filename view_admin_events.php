@@ -52,7 +52,7 @@
                             <td>" . $row['location'] . "</td>
                             <td>
                                 <a href='Edit_events.php?id=" . $row['id'] . "' class='btn btn-primary'>Edit</a>
-                                <a href='delete_event.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
+                                <a href='Delete-events.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>
                             </td>
                           </tr>";
                     }
