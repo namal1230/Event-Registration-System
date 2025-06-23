@@ -1,3 +1,22 @@
+<?php
+    include 'mysql_connect.php';
+
+    if (isset($_POST['save'])) {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $date = $_POST['date'];
+        $location = $_POST['location'];
+
+        $sql = "INSERT INTO events (title, description, date, location) VALUES ('$title', '$description', '$date', '$location')";
+        $result = mysqli_query($con, $sql);
+
+        if ($result) {
+            echo "<script>alert('Event saved successfully!');</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +26,16 @@
     <title>Document</title>
 </head>
 <body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Admin_home.php">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Save_event.php">Save Event</a>
+        </li>
+    </ul>
 
-    <form class="row g-3">
+    <form class="row g-3" method="post">
         <div class="col-md-6">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" required>
