@@ -1,7 +1,7 @@
 <?php
     echo "<h1>Welcome to the Employee Home Page</h1>";
     include 'mysql_connect.php';
-    
+    echo $_GET['id'];
     $sql = "SELECT * FROM events";
     $result = mysqli_query($con, $sql);
 
@@ -22,7 +22,7 @@
             <a class="nav-link active" aria-current="page" href="Employee_home.php?id=<?php echo $_GET['id'] ?>">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Employee_events.php">Events</a>
+            <a class="nav-link" href="Employee_events.php?id=<?php echo $_GET['id'] ?>">Events</a>
         </li>
     </ul>
 
@@ -34,6 +34,7 @@
             <th scope="col">Description</th>
             <th scope="col">Date</th>
             <th scope="col">Location</th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -46,7 +47,10 @@
                             <td>" . $row['description'] . "</td>
                             <td>" . $row['date'] . "</td>
                             <td>" . $row['location'] . "</td>
-                          </tr>";
+                            <td> 
+                                <a href='Register_event.php?id=" . $row['id'] . "&employee_id=" . $_GET['id'] . "' class='btn btn-primary'>Register</a>
+                            </td>
+                            </tr>";
                     }
                 }  
             ?> 

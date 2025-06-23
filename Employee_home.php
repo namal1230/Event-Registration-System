@@ -1,7 +1,7 @@
 <?php
     echo "<h1>Welcome to the Employee Home Page</h1>";
     include 'mysql_connect.php';
-
+    echo $_GET['id'];
     $id= $_GET['id'];
 
     $sql = "SELECT * FROM registrations WHERE employee_id = '" . $id . "'";
@@ -19,10 +19,10 @@
 <body>
      <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Employee_home.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="Employee_home.php?id=<?php echo $_GET['id'] ?>">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="Employee_events.php?id= <?php echo$id ?>">Events</a>
+            <a class="nav-link" href="Employee_events.php?id=<?php echo $_GET['id'] ?>">Events</a>
         </li>
     </ul>
 
